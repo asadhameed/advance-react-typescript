@@ -12,6 +12,8 @@ This Project helps to understand the advance topic of react
    2. If the component is Named Export then the upper solution will not give an error. Solution gives (\_\_tests\_\_/App.test.tsx)
    3. If get an error TypeError: expect(...).toBeInTheDocument is not a function <strong> Solution </strong> import "@testing-library/jest-dom" (\_\_tests\_\_/App.test.tsx)
 5. When add the redux then get an error. without Redux it is working correctly
+   1. One solution Provider become the directly parent of the CommentBox in the file of \_\_testsEnzyme\_\_/ComponentBox.test.tsx. It is not good solution. It is working but if we have more component then we should gives the Provider which is not a good solution
+   2. Better solution makes a helper function (Root.tsx) which test component then just import it (\_\_tests\_\_/ComponentBox.test.tsx)
 
 ## Available Scripts
 

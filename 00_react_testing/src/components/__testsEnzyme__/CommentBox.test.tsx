@@ -1,10 +1,32 @@
 import { CommentBox } from "components/CommentBox";
 
 import { mount, ReactWrapper } from "enzyme";
+
+/**************************************************************
+ * One Solution
+ ********************************************************/
+// import { Provider } from "react-redux";
+// import { createStore } from "redux";
+// import { reducers } from "reducers/";
+
+/**************************************************************
+ * 2nd Solution
+ ********************************************************/
+import Root from "Root";
+
 describe.skip("Enzyme test File CommentBox.tsx", () => {
   let wrapped: ReactWrapper;
   beforeEach(() => {
-    wrapped = mount(<CommentBox />);
+    wrapped = mount(
+      <Root>
+        <CommentBox />
+      </Root>
+    );
+    // wrapped = mount(
+    //   <Provider store={createStore(reducers, {})}>
+    //     <CommentBox />
+    //   </Provider>
+    // ); // one way of solve the redux error
   });
 
   afterEach(() => {

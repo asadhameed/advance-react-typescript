@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { CommentBox } from "./CommentBox";
+
 import { CommentList } from "./CommentList";
 
 function App(): ReactElement {

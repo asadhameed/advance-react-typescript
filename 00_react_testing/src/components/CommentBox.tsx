@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-
-export const CommentBox = () => {
+import { connect } from "react-redux";
+import { saveComment } from "actions/commentAction";
+interface Props {
+  saveComment(comment: string): void;
+}
+const _CommentBox = ({ saveComment }: Props) => {
   const [comment, setComment] = useState("");
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -12,6 +16,7 @@ export const CommentBox = () => {
   // };
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    saveComment(comment);
     setComment("");
   };
   return (
@@ -25,3 +30,5 @@ export const CommentBox = () => {
     </form>
   );
 };
+
+export const CommentBox = connect(null, { saveComment })(_CommentBox);

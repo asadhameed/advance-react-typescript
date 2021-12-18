@@ -16,7 +16,7 @@ jest.mock("components/CommentBox", () => {
 });
 jest.mock("components/CommentList");
 
-describe.skip("This is the React default  test FileName App.tsx", () => {
+describe("This is the React default  test FileName App.tsx", () => {
   beforeEach(() => {});
   test("Shows a comment box", () => {
     render(<App />);
@@ -24,7 +24,7 @@ describe.skip("This is the React default  test FileName App.tsx", () => {
     expect(commentBox).toBeInTheDocument();
   });
 
-  test.skip("Show a comment list", () => {
+  test("Show a comment list", () => {
     render(<App />);
     const commentList = screen.getByText(/CommentList/i);
     expect(commentList).toBeInTheDocument();

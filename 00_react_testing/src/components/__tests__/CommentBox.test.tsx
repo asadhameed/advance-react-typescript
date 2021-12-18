@@ -2,11 +2,32 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { CommentBox } from "components/CommentBox";
 
+/**************************************************************
+ * One Solution
+ ********************************************************/
+
+// import { Provider } from "react-redux";
+// import { createStore } from "redux";
+// import { reducers } from "reducers/";
+
+/**************************************************************
+ * 2nd Solution
+ ********************************************************/
+import Root from "Root";
+
 describe("Default React test File CommentBox.tsx", () => {
-  const setup = () => render(<CommentBox />);
+  const setup = () =>
+    render(
+      //  <Provider store={createStore(reducers, {})}>
+      <Root>
+        <CommentBox />
+      </Root>
+
+      //    </Provider>
+    );
   beforeEach(() => {});
-  test.skip("Has a text and button", () => {
-    render(<CommentBox />);
+  test("Has a text and button", () => {
+    setup();
     const h4Text = screen.getByRole("heading", { name: "Add a comment" });
     const textArea = screen.getByRole("textbox", { name: "" });
     const btnSubmit = screen.getByRole("button", { name: "Submit" });
@@ -23,7 +44,7 @@ describe("Default React test File CommentBox.tsx", () => {
       fireEvent.change(textArea, { target: { value: "NewValue" } });
     };
 
-    test.skip("has a text area that users can type is", () => {
+    test("has a text area that users can type is", () => {
       setup();
 
       /****************************************************
