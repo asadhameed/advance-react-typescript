@@ -9,7 +9,7 @@ export const commentReducer = (
   action: Action
 ): string[] => {
   switch (action.type) {
-    case ActionType.AddComment:
+    case ActionType.SaveComment:
       return [...state, action.payload];
     default:
       return state;
