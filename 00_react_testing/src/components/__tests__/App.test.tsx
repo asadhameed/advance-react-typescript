@@ -16,7 +16,7 @@ jest.mock("components/CommentBox", () => {
 });
 jest.mock("components/CommentList");
 
-describe("This is the React default  test FileName App.tsx", () => {
+describe.skip("This is the React default  test FileName App.tsx", () => {
   beforeEach(() => {});
   test("Shows a comment box", () => {
     render(<App />);

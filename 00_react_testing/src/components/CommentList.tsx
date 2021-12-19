@@ -6,11 +6,12 @@ interface Props {
   comments: string[];
 }
 const _CommentList = ({ comments }: Props) => {
+  const renderComments = () => {
+    return comments.map((comment: string) => <li key={comment}>{comment}</li>);
+  };
   return (
     <div>
-      {comments.map((comment: string) => (
-        <div key={comment}>{comment} </div>
-      ))}
+      <ul>{renderComments()}</ul>
     </div>
   );
 };

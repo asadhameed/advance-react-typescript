@@ -15,7 +15,7 @@ import { CommentBox } from "components/CommentBox";
  ********************************************************/
 import Root from "Root";
 
-describe("Default React test File CommentBox.tsx", () => {
+describe.skip("Default React test File CommentBox.tsx", () => {
   const setup = () =>
     render(
       //  <Provider store={createStore(reducers, {})}>

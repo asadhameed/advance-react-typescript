@@ -5,10 +5,13 @@ import { createStore } from "redux";
 import { reducers } from "reducers/";
 interface Props {
   children: React.ReactElement;
+  initialState?: { comments: string[] };
 }
-const Root = (props: Props): React.ReactElement => {
+const Root = ({ children, initialState }: Props): React.ReactElement => {
   return (
-    <Provider store={createStore(reducers, {})}>{props.children}</Provider>
+    <Provider store={createStore(reducers, initialState ? initialState : {})}>
+      {children}
+    </Provider>
   );
 };
 
