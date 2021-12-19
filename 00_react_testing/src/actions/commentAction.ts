@@ -16,7 +16,7 @@ export const fetchComments = async (): Promise<FetchAction> => {
 
   if (response.status === 200) {
     comments = response.data.map(
-      (comment: { id: number; name: string }): string => comment.name
+      (comment: { name: string }): string => comment.name
     );
   }
 
