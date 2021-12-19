@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import Root from "Root";
 import { CommentList } from "components/CommentList";
 
-describe("Default React test File CommentBox.tsx", () => {
+describe.skip("Default React test File CommentBox.tsx", () => {
   const setup = () => {
     const initialState = { comments: ["Comment 1", "Comment 2"] };
     render(

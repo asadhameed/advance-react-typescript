@@ -1,8 +1,27 @@
-import { Action } from "../reducers/comments";
-import { ActionType } from "./actionTypes";
-export const saveComment = (comment: string): Action => {
+import axios from "axios";
+import { ActionType, SaveAction, FetchAction } from "./actionTypes";
+export const saveComment = (comment: string): SaveAction => {
   return {
     type: ActionType.SaveComment,
     payload: comment,
-  } as Action;
+  };
+};
+
+export const fetchComments = async (): Promise<FetchAction> => {
+  const response = await axios.get(
+    "https://jsonplaceholder.typicode.com/comments"
+  );
+
+  let comments = [];
+
+  if (response.status === 200) {
+    comments = response.data.map(
+      (comment: { id: number; name: string }): string => comment.name
+    );
+  }
+
+  return {
+    type: ActionType.FetchComments,
+    payload: comments,
+  };
 };

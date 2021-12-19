@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import reduxPromise from "redux-promise";
+import { createStore, applyMiddleware } from "redux";
 
 import { reducers } from "reducers/";
 interface Props {
@@ -8,11 +9,12 @@ interface Props {
   initialState?: { comments: string[] };
 }
 const Root = ({ children, initialState }: Props): React.ReactElement => {
-  return (
-    <Provider store={createStore(reducers, initialState ? initialState : {})}>
-      {children}
-    </Provider>
+  const store = createStore(
+    reducers,
+    initialState ? initialState : {},
+    applyMiddleware(reduxPromise)
   );
+  return <Provider store={store}>{children}</Provider>;
 };
 
 export default Root;

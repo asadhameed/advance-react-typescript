@@ -26,6 +26,10 @@ This Project helps to understand the advance topic of react
 
 ### `npm i --save-dev @types/enzyme`
 
+### `npm install --save axios redux-promise`
+
+### `npm i --save-dev @types/redux-promise`
+
 In the project directory, you can run:
 
 ### `npm start`

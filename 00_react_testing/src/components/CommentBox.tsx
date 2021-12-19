@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { saveComment } from "actions/commentAction";
+import { saveComment, fetchComments } from "actions/commentAction";
 interface Props {
   saveComment(comment: string): void;
+  fetchComments(): void;
 }
-const _CommentBox = ({ saveComment }: Props) => {
+const _CommentBox = ({ saveComment, fetchComments }: Props) => {
   const [comment, setComment] = useState("");
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -20,15 +21,20 @@ const _CommentBox = ({ saveComment }: Props) => {
     setComment("");
   };
   return (
-    <form onSubmit={handlerSubmit}>
-      <h4>Add a comment</h4>
-      <textarea value={comment} onChange={onChangeHandler} />
-      <div>
-        {/* <button onClick={onSubmit}>Submit</button> */}
-        <button>Submit</button>
-      </div>
-    </form>
+    <>
+      <form onSubmit={handlerSubmit}>
+        <h4>Add a comment</h4>
+        <textarea value={comment} onChange={onChangeHandler} />
+        <div>
+          {/* <button onClick={onSubmit}>Submit</button> */}
+          <button>Submit</button>
+        </div>
+      </form>
+      <button onClick={fetchComments}>Fetch Comments</button>
+    </>
   );
 };
 
-export const CommentBox = connect(null, { saveComment })(_CommentBox);
+export const CommentBox = connect(null, { saveComment, fetchComments })(
+  _CommentBox
+);

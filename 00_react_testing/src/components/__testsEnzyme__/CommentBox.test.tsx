@@ -32,8 +32,8 @@ describe.skip("Enzyme test File CommentBox.tsx", () => {
   afterEach(() => {
     wrapped.unmount();
   });
-  it.skip("Has a text and button", () => {
-    expect(wrapped.find("button").length).toEqual(1);
+  it("Has a text and two buttons", () => {
+    expect(wrapped.find("button").length).toEqual(2);
     expect(wrapped.find("textarea").length).toEqual(1);
   });
   describe("update Textarea", () => {

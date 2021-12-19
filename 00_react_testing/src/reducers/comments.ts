@@ -1,9 +1,5 @@
-import { ActionType } from "actions/actionTypes";
+import { ActionType, Action } from "actions/actionTypes";
 
-export interface Action {
-  type: ActionType;
-  payload: string;
-}
 export const commentReducer = (
   state: string[] = [],
   action: Action
@@ -11,6 +7,8 @@ export const commentReducer = (
   switch (action.type) {
     case ActionType.SaveComment:
       return [...state, action.payload];
+    case ActionType.FetchComments:
+      return [...state, ...(action.payload as string[])];
     default:
       return state;
   }
